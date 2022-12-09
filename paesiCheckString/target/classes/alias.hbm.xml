@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 5.3//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+  
+ <hibernate-mapping>  
+  <class name="com.paesi.Alias" table="alias">  
+            
+    <id name="aliasCountry" column="alias_paese"></id>  
+   	<many-to-one name="country" class="com.paesi.Country" column="nome_paese"></many-to-one>
+            
+  </class>  
+            
+ </hibernate-mapping> 
