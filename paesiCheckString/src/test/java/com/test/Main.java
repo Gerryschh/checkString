@@ -36,7 +36,7 @@ public class Main {
 	        );
 		
 		System.out.println(checkChain.check("khorea del sud", s) );
-		System.out.println("test#5");
+		System.out.println("test#6");
 
 	}   
 }
