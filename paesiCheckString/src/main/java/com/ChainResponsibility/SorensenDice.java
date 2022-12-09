@@ -18,7 +18,7 @@ public class SorensenDice extends CheckChain {
 		for(String word : super.getStandards()) {
 			double sor = similarity(word, input);
 			if (sor > 0.6) {
-				System.out.println("trovato con SorensenDice con :" + sor);
+				System.out.println("trovato con SorensenDice");
 				return input;
 			}
 		}

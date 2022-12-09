@@ -18,7 +18,7 @@ package com.ChainResponsibility;
 			for(String word : super.getStandards()) {
 				double jad = similarity(word, input);
 				if (jad > 0.6) {
-					System.out.println("trovato con Jaccard con :" + jad);
+					System.out.println("trovato con Jaccard");
 					return input;
 				}
 			}

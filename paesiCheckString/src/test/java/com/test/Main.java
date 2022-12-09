@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import org.hibernate.Session;
 import com.ChainResponsibility.CheckChain;
 import com.ChainResponsibility.Contained;
 import com.ChainResponsibility.Contains;
@@ -16,9 +15,7 @@ import com.ChainResponsibility.EqualsStandardCS;
 import com.ChainResponsibility.Jaccard;
 import com.ChainResponsibility.JaroDistance;
 import com.ChainResponsibility.SorensenDice;
-import com.Gerardo.ConnectionToDB;
 import com.strategy.Strategy;
-import com.strategy.StrategyDB;
 import com.strategy.StrategyFile;
 
 public class Main {
