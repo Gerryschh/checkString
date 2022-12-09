@@ -33,6 +33,7 @@ public class Main {
 		
 		System.out.println(checkChain.check("pippo", s) );
 		System.out.println("test#5");
-	        
+		System.out.println("test#6");
+
 	}   
 }
