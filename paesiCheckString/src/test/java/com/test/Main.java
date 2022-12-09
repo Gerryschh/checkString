@@ -22,7 +22,7 @@ public class Main {
 
 	public static void main(String[] args) { 
 		
-		/*Strategy s = new StrategyDB();
+		Strategy s = new StrategyFile();
 		Map<String, List<String>> map = s.veryBigMapOfTheWorld();
 		
 		CheckChain checkChain = CheckChain.link(
@@ -36,12 +36,8 @@ public class Main {
 	            new JaroDistance(),
 	            new EqualsInputCS()
 	        );
+		System.out.println(checkChain.check("ital", s) );
 		
-		System.out.println(checkChain.check("khorea del sud", s) );
-		System.out.println("test#5");*/
-		
-		Strategy s = new StrategyFile();
-		System.out.println(s.toString());
 
 	}   
 }
