@@ -1,8 +1,11 @@
 package com.test;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
+
 import org.hibernate.Session;
 import com.ChainResponsibility.CheckChain;
 import com.ChainResponsibility.Contained;
@@ -21,7 +24,7 @@ import com.strategy.StrategyFile;
 public class Main {
 
 	public static void main(String[] args) { 
-		
+
 		Strategy s = new StrategyFile();
 		Map<String, List<String>> map = s.veryBigMapOfTheWorld();
 		
@@ -36,8 +39,20 @@ public class Main {
 	            new JaroDistance(),
 	            new EqualsInputCS()
 	        );
-		System.out.println(checkChain.check("ital", s) );
 		
+		Scanner sc;
+		try {
+			sc = new Scanner (new File("./src/main/resources/dataset/150_nazioni_modified.txt"));
+			sc.useDelimiter("\n");
+			while(sc.hasNext()) {
+				String current= sc.next().toLowerCase();
+				System.out.println("Paese txt: "+ current+" Paese trovato: "+checkChain.check(current, s) );
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 
 	}   
 }
