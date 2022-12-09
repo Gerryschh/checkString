@@ -58,7 +58,9 @@ public class StrategyFile implements Strategy {
 	public String toString() {
 		String result = "";
 		for(String paese: this.veryBigMapOfTheWorld().keySet()) {
-			result.concat("Paese: ").concat(paese).concat(" Aliases: ").concat(this.veryBigMapOfTheWorld().get(paese).toString()).concat("\n");
+			result += "Paese: "+paese+
+					"      Aliases: "+this.veryBigMapOfTheWorld().get(paese).toString()+
+					"\n";
 		}
 		return result;
 	}
