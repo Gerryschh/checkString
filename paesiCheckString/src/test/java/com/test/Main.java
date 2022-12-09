@@ -11,6 +11,7 @@ import com.ChainResponsibility.EqualsInputCS;
 import com.ChainResponsibility.EqualsStandardCS;
 import com.ChainResponsibility.Jaccard;
 import com.ChainResponsibility.JaroDistance;
+import com.ChainResponsibility.SorensenDice;
 import com.Gerardo.ConnectionToDB;
 import com.strategy.Strategy;
 import com.strategy.StrategyDB;
@@ -29,11 +30,12 @@ public class Main {
 	            new Contains(),
 	            new ContainsPartial(),
 	            new Jaccard(),
+	            new SorensenDice(),
 	            new JaroDistance(),
 	            new EqualsInputCS()
 	        );
 		
-		System.out.println(checkChain.check("pippo", s) );
+		System.out.println(checkChain.check("khorea del sud", s) );
 		System.out.println("test#5");
 
 	}   
