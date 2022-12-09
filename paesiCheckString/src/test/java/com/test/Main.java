@@ -1,5 +1,6 @@
 package com.test;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 import org.hibernate.Session;
@@ -15,12 +16,13 @@ import com.ChainResponsibility.SorensenDice;
 import com.Gerardo.ConnectionToDB;
 import com.strategy.Strategy;
 import com.strategy.StrategyDB;
+import com.strategy.StrategyFile;
 
 public class Main {
 
 	public static void main(String[] args) { 
 		
-		Strategy s = new StrategyDB();
+		/*Strategy s = new StrategyDB();
 		Map<String, List<String>> map = s.veryBigMapOfTheWorld();
 		
 		CheckChain checkChain = CheckChain.link(
@@ -36,7 +38,10 @@ public class Main {
 	        );
 		
 		System.out.println(checkChain.check("khorea del sud", s) );
-		System.out.println("test#5");
+		System.out.println("test#5");*/
+		Strategy s = new StrategyFile();
+		System.out.println(s.toString());
+
 
 	}   
 }
