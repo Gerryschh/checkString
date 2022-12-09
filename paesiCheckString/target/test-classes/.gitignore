@@ -2,3 +2,4 @@ paesiCheckString/src/main/resources/hibernate.cfg.xml
 paesiCheckString/target/classes/hibernate.cfg.xml
 paesiCheckString/target/classes/META-INF/MANIFEST.MF
 paesiCheckString/target/classes/META-INF/maven/paesiCheckString/paesiCheckString/pom.properties
+/com/
