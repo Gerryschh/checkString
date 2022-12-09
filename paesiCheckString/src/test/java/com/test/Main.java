@@ -38,10 +38,14 @@ public class Main {
 	        );
 		
 		System.out.println(checkChain.check("khorea del sud", s) );
+<<<<<<< HEAD
 		System.out.println("test#5");*/
 		Strategy s = new StrategyFile();
 		System.out.println(s.toString());
 
+=======
+		System.out.println("test#6");
+>>>>>>> branch 'main' of https://github.com/Gerryschh/checkString.git
 
 	}   
 }
