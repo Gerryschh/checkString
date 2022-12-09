@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import com.ChainResponsibility.CheckChain;
 import com.ChainResponsibility.Contained;
 import com.ChainResponsibility.Contains;
+import com.ChainResponsibility.ContainsPartial;
 import com.ChainResponsibility.EqualsInputCS;
 import com.ChainResponsibility.EqualsStandardCS;
 import com.ChainResponsibility.JaroDistance;
@@ -25,6 +26,7 @@ public class Main {
 	            new EqualsStandardCS(),
 	            new Contained(),
 	            new Contains(),
+	            new ContainsPartial(),
 	            new JaroDistance(),
 	            new EqualsInputCS()
 	        );
