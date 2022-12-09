@@ -9,6 +9,7 @@ import com.ChainResponsibility.Contains;
 import com.ChainResponsibility.ContainsPartial;
 import com.ChainResponsibility.EqualsInputCS;
 import com.ChainResponsibility.EqualsStandardCS;
+import com.ChainResponsibility.Jaccard;
 import com.ChainResponsibility.JaroDistance;
 import com.Gerardo.ConnectionToDB;
 import com.strategy.Strategy;
@@ -27,6 +28,7 @@ public class Main {
 	            new Contained(),
 	            new Contains(),
 	            new ContainsPartial(),
+	            new Jaccard(),
 	            new JaroDistance(),
 	            new EqualsInputCS()
 	        );
