@@ -1,6 +1,6 @@
 package com.paesi;
 
-public class AliasUnknown {
+public class AliasUnknown implements Bean {
 	private String incognita;
 
 	public String getIncognita() {

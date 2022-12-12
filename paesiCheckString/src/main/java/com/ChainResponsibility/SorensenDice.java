@@ -9,21 +9,23 @@ import java.util.regex.Pattern;
 
 import com.strategy.Strategy;
 
-public class SorensenDice extends CheckChain {
+public class SorensenDice extends CheckChainStandards {
 	private final Pattern SPACE_REG = Pattern.compile("\\s+");
 	private int k = 4;
+	private double soglia;
+	
 
+	public SorensenDice(double soglia) {
+		super();
+		this.soglia = soglia;
+	}
+	
 	@Override
-	public String check(String input, Strategy s) {
-		for(String word : super.getStandards()) {
-			double sor = similarity(word, input);
-			if (sor > 0.6) {
-				System.out.println("trovato con SorensenDice");
-				return input;
-			}
-		}
-        	
-		return super.checkNext(input, s);
+	protected boolean compare(String input, String standard) {
+		double distance = similarity(input, standard);
+		System.out.println(this.getClass().getSimpleName() + " " + distance + " " + standard + "-" + input);
+		
+		return (distance > soglia) ? true : false;
 	}
 
 	public final Map<String, Integer> getProfile(final String string) {
@@ -85,4 +87,5 @@ public class SorensenDice extends CheckChain {
 	public final double distance(final String s1, final String s2) {
 		return 1 - similarity(s1, s2);
 	}
+
 }

@@ -2,27 +2,20 @@ package com.ChainResponsibility;
 
 import com.strategy.Strategy;
 
-public class JaroDistance extends CheckChain{ 
-	@Override
-	public String check(String input, Strategy s) {
-		String valueMeaned=null;
-        double differenceLevel=0.0;
-        for(String standard : super.getStandards()) {
+public class JaroDistance extends CheckChainStandards{ 
+	private double soglia;
+	
+	
+	public JaroDistance(double soglia) {
+		super();
+		this.soglia = soglia;
+	}
 
-        	double jaroDistance = jaroDistanceAlgorithm(standard, input);
-			if(jaroDistance>differenceLevel) {
-				differenceLevel = jaroDistance;
-	    		valueMeaned = standard;
-			}
-        }
-    
-        if(differenceLevel<0.7) 
-        	return super.checkNext(input, s);
-        else {
-			System.out.println("Trovato con JaroDistance");
-			return valueMeaned;
-        }
-        	
+	@Override
+	protected boolean compare(String input, String standard) {
+		double distance = jaroDistanceAlgorithm(standard, input);
+		System.out.println(this.getClass().getSimpleName() + " " + distance + " " + standard + "-" + input);
+		return (distance < soglia) ? false : true;
 	}
 	
 	static double jaroDistanceAlgorithm(String s1, String s2){
@@ -96,5 +89,7 @@ public class JaroDistance extends CheckChain{
 	            + ((double)match - t) / ((double)match))
 	        / 3.0;
 	}
+
+
 
 }

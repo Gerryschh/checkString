@@ -4,19 +4,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-
+import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.NativeQuery;
 import com.Gerardo.ConnectionToDB;
+import com.dao.AliasUnknownDao;
+import com.dao.impl.AliasUnknownDaoImpl;
 import com.paesi.Alias;
 import com.paesi.AliasUnknown;
 
 public class StrategyDB implements Strategy{
 	
 	static Session session = ConnectionToDB.getSession();
+	private AliasUnknownDao dao = new AliasUnknownDaoImpl();
 	
 	public String getAliases(String input) {
 	    String query = "select nome_paese from alias where alias_paese = " + input;
@@ -44,11 +46,17 @@ public class StrategyDB implements Strategy{
 
 
 	public void addStupidInput(String input) {
-		session.beginTransaction();
+
 		AliasUnknown au = new AliasUnknown();
 		au.setIncognita(input);
-		session.save(au);
-		session.getTransaction().commit();
+		dao.create(au);
+	}
+
+
+	@Override
+	public Set<String> getStandards() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
 

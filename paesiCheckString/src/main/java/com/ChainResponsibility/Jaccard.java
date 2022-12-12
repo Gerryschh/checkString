@@ -9,23 +9,26 @@ package com.ChainResponsibility;
 
 	import com.strategy.Strategy;
 
-	public class Jaccard extends CheckChain {
+	public class Jaccard extends CheckChainStandards {
 		private final Pattern SPACE_REG = Pattern.compile("\\s+");
 		private int k = 4;
+		private double soglia;
+		
 
-		@Override
-		public String check(String input, Strategy s) {
-			for(String word : super.getStandards()) {
-				double jad = similarity(word, input);
-				if (jad > 0.6) {
-					System.out.println("trovato con Jaccard");
-					return input;
-				}
-			}
-	        	
-			return super.checkNext(input, s);
+		public Jaccard(double soglia) {
+			super();
+			this.soglia = soglia;
 		}
 		
+		@Override
+		protected boolean compare(String input, String standard) {
+			double distance = similarity(standard, input);
+			
+			System.out.println(this.getClass().getSimpleName() + " " + distance + " " + standard + "-" + input);
+			
+			return (distance > soglia) ? true : false;
+		}
+
 		
 		public final Map<String, Integer> getProfile(final String string) {
 	        HashMap<String, Integer> shingles = new HashMap<String, Integer>();

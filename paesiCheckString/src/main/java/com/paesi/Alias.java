@@ -1,6 +1,6 @@
 package com.paesi;
 
-public class Alias {
+public class Alias implements Bean {
 	private String aliasCountry;
 	private Country country;
 

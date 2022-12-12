@@ -1,6 +1,6 @@
 package com.paesi;
 
-public class Country {
+public class Country implements Bean {
 	private String countryName;
 
 	public String getCountryName() {

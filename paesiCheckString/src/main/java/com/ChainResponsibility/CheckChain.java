@@ -9,48 +9,36 @@ import com.strategy.Strategy;
 
 public abstract class CheckChain {
 	private CheckChain nextChain;
-	private static List<String> standards=new ArrayList<String>();
-	private static Map<String, List<String>> map = new HashMap<String, List<String>>();
+	private static Strategy strategy;
 	
 	public void setNextChain(CheckChain nextChain) {
 		this.nextChain=nextChain;
 	}
-	public abstract String check(String input, Strategy s);
+	public final String check(String input) {
+		String result = checkInternal(input);
+			/*if(result != null) {
+				return result;
+			} else*/ return checkNext(input);
+		}
+	protected abstract String checkInternal(String input);
 	
-	public CheckChain getChain() {
+	private CheckChain getChain() {
 		return nextChain;
 	}
-	public List<String> getStandards() {
-		return standards;
-	}
-	public static void setStandards(List<String> standardsList) {
-		standards = standardsList;
-	}
 	
 	
-	protected String checkNext(String input, Strategy s) {
+	protected String checkNext(String input) {
 		if (nextChain == null) {
-            s.addStupidInput(input);
+            strategy.addStupidInput(input);
         	return "Input aggiunto al DB";
         }
-        return nextChain.check(input, s);
+        return nextChain.check(input);
 	}
-	
-	public static CheckChain link(Map<String, List<String>> map, CheckChain first, CheckChain... chain) {
-		CheckChain head = first;
-		setMap(map);
-		setStandards(new ArrayList<String>(map.keySet()));
-        for (CheckChain nextInChain: chain) {
-            head.nextChain = nextInChain;
-            head = nextInChain;
-        }
-        return first;
-    }
-	public static Map<String, List<String>> getMap() {
-		return map;
+	public Strategy getStrategy() {
+		return strategy;
 	}
-	public static void setMap(Map<String, List<String>> map) {
-		CheckChain.map = map;
+	public void setStrategy(Strategy strategy) {
+		this.strategy = strategy;
 	}
 	
 }

@@ -24,26 +24,25 @@ public class Main {
 
 		Strategy s = new StrategyFile();
 		Map<String, List<String>> map = s.veryBigMapOfTheWorld();
+		CheckChain es = new EqualsStandardCS();
+		CheckChain cd = new Contained(); cd.setNextChain(es);
+		CheckChain cs = new Contains(); cs.setNextChain(cd);
+		CheckChain cp = new ContainsPartial(); cp.setNextChain(cs);
+		CheckChain j = new Jaccard(0.6); j.setNextChain(cp);
+		CheckChain sd = new SorensenDice(0.6); sd.setNextChain(j);
+		CheckChain jd = new JaroDistance(0.8); jd.setNextChain(sd);
+		CheckChain ei = new EqualsInputCS(); ei.setNextChain(jd);
 		
-		CheckChain checkChain = CheckChain.link(
-				map,
-	            new EqualsStandardCS(),
-	            new Contained(),
-	            new Contains(),
-	            new ContainsPartial(),
-	            new Jaccard(),
-	            new SorensenDice(),
-	            new JaroDistance(),
-	            new EqualsInputCS()
-	        );
+		ei.setStrategy(s);
 		
 		Scanner sc;
 		try {
-			sc = new Scanner (new File("./src/main/resources/dataset/150_nazioni_modified.txt"));
+			sc = new Scanner (new File("./src/main/resources/dataset/nazioni_test"));
 			sc.useDelimiter("\n");
 			while(sc.hasNext()) {
 				String current= sc.next().toLowerCase();
-				System.out.println("Paese txt: "+ current+" Paese trovato: "+checkChain.check(current, s) );
+				ei.check(current.trim());
+				//System.out.println("Paese txt: "+ current+" Paese trovato: "+checkChain.check(current, s) );
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

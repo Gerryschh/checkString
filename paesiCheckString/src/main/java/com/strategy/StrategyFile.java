@@ -3,12 +3,16 @@ package com.strategy;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 public class StrategyFile implements Strategy {
+	
+	private static Set<String> standards;
 
 	@Override
 	public String getAliases(String alias) {
@@ -45,7 +49,7 @@ public class StrategyFile implements Strategy {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		setStandards(map.keySet());
 		return map;
 	}
 
@@ -63,6 +67,12 @@ public class StrategyFile implements Strategy {
 					"\n";
 		}
 		return result;
+	}
+	public Set<String> getStandards() {
+		return standards;
+	}
+	public static void setStandards(Set<String> standards) {
+		StrategyFile.standards = standards;
 	}
 	
 	
