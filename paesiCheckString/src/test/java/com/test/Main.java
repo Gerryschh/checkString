@@ -37,10 +37,10 @@ public class Main {
 		
 		Scanner sc;
 		try {
-			sc = new Scanner (new File("./src/main/resources/dataset/nazioni_test"));
+			sc = new Scanner (new File("./src/main/resources/dataset/150_nazioni_modified.txt"));
 			sc.useDelimiter("\n");
 			while(sc.hasNext()) {
-				String current= sc.next().toLowerCase();
+				String current= sc.next();
 				ei.check(current.trim());
 				//System.out.println("Paese txt: "+ current+" Paese trovato: "+checkChain.check(current, s) );
 			}

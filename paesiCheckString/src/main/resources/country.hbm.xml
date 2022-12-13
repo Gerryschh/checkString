@@ -6,7 +6,8 @@
  <hibernate-mapping>  
   <class name="com.paesi.Country" table="country">  
   	
-  	<id name="countryName" column="nome_paese"></id>  
+  	<id name="countryName" column="nome_paese"></id> 
+  	<property name="alphacode" column="alpha2_code"></property>  
   
   </class>  
             

@@ -8,4 +8,10 @@ public class CountryDaoImpl extends BaseDao implements CountryDao {
 	public void create(Country c) {
 		super.create(c);
 	}
+
+	@Override
+	public Country get(String id) {
+		return (Country) super.get(Country.class, id);
+		
+	}
 }

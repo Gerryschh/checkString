@@ -7,7 +7,10 @@
   <class name="com.paesi.Alias" table="alias">  
             
     <id name="aliasCountry" column="alias_paese"></id>  
+    <property name="algorithm" column="algoritmo"></property> 
    	<many-to-one name="country" class="com.paesi.Country" column="nome_paese"></many-to-one>
+   	<property name="soglia" column="soglia"></property> 
+   	<property name="approved" column="approvato"></property> 
             
   </class>  
             

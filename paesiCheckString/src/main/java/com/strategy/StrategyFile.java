@@ -28,7 +28,7 @@ public class StrategyFile implements Strategy {
 			sc.useDelimiter("\n");
 			while(sc.hasNext()) {
 				//System.out.println(sc.next());
-				String current= sc.next().toLowerCase();
+				String current= sc.next();
 				if (current.contains("\"")) {
 					String[] dati=current.trim().replaceAll("\"", "").split(",");
 					List<String> x= new ArrayList<String>();

@@ -5,4 +5,5 @@ import com.paesi.Country;
 
 public interface CountryDao {
 	public void create(Country c);
+	public Country get(String id);
 }
