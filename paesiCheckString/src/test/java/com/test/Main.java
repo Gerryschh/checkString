@@ -14,6 +14,7 @@ import com.ChainResponsibility.EqualsInputCS;
 import com.ChainResponsibility.EqualsStandardCS;
 import com.ChainResponsibility.Jaccard;
 import com.ChainResponsibility.JaroDistance;
+import com.ChainResponsibility.Levenshtein;
 import com.ChainResponsibility.SorensenDice;
 import com.strategy.Strategy;
 import com.strategy.StrategyFile;
@@ -29,8 +30,9 @@ public class Main {
 		CheckChain cs = new Contains(); cs.setNextChain(cd);
 		CheckChain cp = new ContainsPartial(); cp.setNextChain(cs);
 		CheckChain j = new Jaccard(0.6); j.setNextChain(cp);
+		CheckChain lev = new Levenshtein(2); lev.setNextChain(cd);
 		CheckChain sd = new SorensenDice(0.6); sd.setNextChain(j);
-		CheckChain jd = new JaroDistance(0.8); jd.setNextChain(sd);
+		CheckChain jd = new JaroDistance(0.8); jd.setNextChain(lev);
 		CheckChain ei = new EqualsInputCS(); ei.setNextChain(jd);
 		
 		ei.setStrategy(s);
