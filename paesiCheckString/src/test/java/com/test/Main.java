@@ -33,7 +33,7 @@ public class Main {
 		CheckChain lev = new Levenshtein(2); lev.setNextChain(cd);
 		CheckChain sd = new SorensenDice(0.6); sd.setNextChain(j);
 		CheckChain jd = new JaroDistance(0.8); jd.setNextChain(lev);
-		CheckChain ei = new EqualsInputCS(); ei.setNextChain(es);
+		CheckChain ei = new EqualsInputCS(); ei.setNextChain(cs);
 		
 		ei.setStrategy(s);
 		
@@ -50,7 +50,6 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 
 	}   
 }

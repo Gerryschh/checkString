@@ -35,10 +35,15 @@ public abstract class CheckChain {
 			a.setApproved(false);
 			a.setSoglia(0);
 			dao.create(a);
-			return result;
+			//return result;
 		}
-		return null;
-	
+		//non ho trovato la soluzione, procedo col successivo se c'è
+		if (nextChain!= null)
+			return this.nextChain.check(input);
+		else {
+			strategy.addStupidInput(input);
+        	return null;
+		}
 		}
 	protected abstract String checkInternal(String input);
 	
@@ -46,14 +51,6 @@ public abstract class CheckChain {
 		return nextChain;
 	}
 	
-	
-	protected String checkNext(String input) {
-		if (nextChain == null) {
-            //strategy.addStupidInput(input);
-        	return "Input aggiunto al DB";
-        }
-        return this.nextChain.checkInternal(input);
-	}
 	public Strategy getStrategy() {
 		return strategy;
 	}

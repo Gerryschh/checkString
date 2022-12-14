@@ -14,7 +14,7 @@ public class Levenshtein extends CheckChainStandards {
 	@Override
 	protected boolean compare(String input, String standard) {
 		int result = distance(input, standard);
-		System.out.println(this.getClass().getSimpleName() + " " + result + " " + standard + "-" + input);
+		//System.out.println(this.getClass().getSimpleName() + " " + result + " " + standard + "-" + input);
 		return (result <= soglia) ? true : false;
 	}
 
