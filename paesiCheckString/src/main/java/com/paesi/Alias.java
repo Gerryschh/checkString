@@ -37,4 +37,10 @@ public class Alias implements Bean {
 	public void setCountry(Country country) {
 		this.country = country;
 	}
+	@Override
+	public String toString() {
+		return "Alias [aliasCountry=" + aliasCountry + ", country=" + country + ", algorithm=" + algorithm + ", soglia="
+				+ soglia + ", approved=" + approved + "]";
+	}
+	
 }

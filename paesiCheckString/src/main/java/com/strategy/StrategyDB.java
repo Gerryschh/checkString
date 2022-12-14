@@ -11,12 +11,14 @@ import org.hibernate.Transaction;
 import org.hibernate.query.NativeQuery;
 import com.Gerardo.ConnectionToDB;
 import com.dao.AliasUnknownDao;
+import com.dao.CountryDao;
 import com.dao.impl.AliasUnknownDaoImpl;
+import com.dao.impl.CountryDaoImpl;
 import com.paesi.Alias;
 import com.paesi.AliasUnknown;
 
 public class StrategyDB implements Strategy{
-	
+	CountryDao countryDao = new CountryDaoImpl();
 	static Session session = ConnectionToDB.getSession();
 	private AliasUnknownDao dao = new AliasUnknownDaoImpl();
 	
@@ -28,9 +30,9 @@ public class StrategyDB implements Strategy{
 
 	
 	public Map<String,List<String>> veryBigMapOfTheWorld() {
-        NativeQuery<String> q = session.createSQLQuery("Select * From country");
+        //NativeQuery<String> q = session.createSQLQuery("Select * From country");
         HashMap<String, List<String>> map = new HashMap<String, List<String>>();
-        for (String s: q.getResultList()) {
+        for (String s: countryDao.getAll()) {
             map.put(s.toLowerCase(), new ArrayList<String>());
         }
         NativeQuery<Object []> mq = session.createSQLQuery("Select alias_paese, nome_paese from alias");
@@ -55,7 +57,7 @@ public class StrategyDB implements Strategy{
 
 	@Override
 	public Set<String> getStandards() {
-		// TODO Auto-generated method stub
+		//return (Set<String>) countryDao.getAll();
 		return null;
 	}
 }

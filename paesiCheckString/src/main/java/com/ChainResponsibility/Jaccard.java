@@ -9,24 +9,19 @@ package com.ChainResponsibility;
 
 	import com.strategy.Strategy;
 
-	public class Jaccard extends CheckChainStandards {
+	public class Jaccard extends CheckChainDistance {
 		private final Pattern SPACE_REG = Pattern.compile("\\s+");
 		private int k = 4;
-		private double soglia;
-		
 
-		public Jaccard(double soglia) {
-			super();
-			this.soglia = soglia;
+		public Jaccard(double distance) {
+			super(distance);
 		}
 		
 		@Override
 		protected boolean compare(String input, String standard) {
 			double distance = similarity(standard, input);
-			
 			System.out.println(this.getClass().getSimpleName() + " " + distance + " " + standard + "-" + input);
-			
-			return (distance > soglia) ? true : false;
+			return (distance > getDistance()) ? true : false;
 		}
 
 		

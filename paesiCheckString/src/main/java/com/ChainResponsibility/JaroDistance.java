@@ -2,20 +2,17 @@ package com.ChainResponsibility;
 
 import com.strategy.Strategy;
 
-public class JaroDistance extends CheckChainStandards{ 
-	private double soglia;
+public class JaroDistance extends CheckChainDistance{ 
 	
-	
-	public JaroDistance(double soglia) {
-		super();
-		this.soglia = soglia;
+	public JaroDistance(double distance) {
+		super(distance);
 	}
 
 	@Override
 	protected boolean compare(String input, String standard) {
 		double distance = jaroDistanceAlgorithm(standard, input);
 		System.out.println(this.getClass().getSimpleName() + " " + distance + " " + standard + "-" + input);
-		return (distance < soglia) ? false : true;
+		return (distance < getDistance()) ? false : true;
 	}
 	
 	static double jaroDistanceAlgorithm(String s1, String s2){

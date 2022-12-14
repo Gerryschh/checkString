@@ -24,7 +24,7 @@ public class ContainsPartial extends CheckChain {
                 return key;
         }
 
-        return super.checkNext(input);
+        return null;
 
 	}
 }

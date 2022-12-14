@@ -2,20 +2,17 @@ package com.ChainResponsibility;
 
 import java.util.Arrays;
 
-public class Levenshtein extends CheckChainStandards {
-	private int soglia; 
+public class Levenshtein extends CheckChainDistance {
 	
-	
-	public Levenshtein(int d) {
-		super();
-		this.soglia = d;
+	public Levenshtein(int distance) {
+		super(distance);
 	}
 	
 	@Override
 	protected boolean compare(String input, String standard) {
 		int result = distance(input, standard);
 		System.out.println(this.getClass().getSimpleName() + " " + result + " " + standard + "-" + input);
-		return (result <= soglia) ? true : false;
+		return (result <= getDistance()) ? true : false;
 	}
 
 	private int distance(String x, String y) {

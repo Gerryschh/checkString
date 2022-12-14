@@ -9,15 +9,13 @@ import java.util.regex.Pattern;
 
 import com.strategy.Strategy;
 
-public class SorensenDice extends CheckChainStandards {
+public class SorensenDice extends CheckChainDistance {
 	private final Pattern SPACE_REG = Pattern.compile("\\s+");
 	private int k = 4;
-	private double soglia;
 	
 
-	public SorensenDice(double soglia) {
-		super();
-		this.soglia = soglia;
+	public SorensenDice(double distance) {
+		super(distance);
 	}
 	
 	@Override
@@ -25,10 +23,10 @@ public class SorensenDice extends CheckChainStandards {
 		double distance = similarity(input, standard);
 		System.out.println(this.getClass().getSimpleName() + " " + distance + " " + standard + "-" + input);
 		
-		return (distance > soglia) ? true : false;
+		return (distance > getDistance()) ? true : false;
 	}
 
-	public final Map<String, Integer> getProfile(final String string) {
+	private final Map<String, Integer> getProfile(final String string) {
 		HashMap<String, Integer> shingles = new HashMap<String, Integer>();
 
 		String string_no_space = SPACE_REG.matcher(string).replaceAll(" ");
@@ -45,7 +43,7 @@ public class SorensenDice extends CheckChainStandards {
 		return Collections.unmodifiableMap(shingles);
 	}
 
-	public final double similarity(final String s1, final String s2) {
+	private final double similarity(final String s1, final String s2) {
 		if (s1 == null) {
 			throw new NullPointerException("s1 must not be null");
 		}
@@ -84,7 +82,7 @@ public class SorensenDice extends CheckChainStandards {
 	 * @return 1 - the Jaccard similarity.
 	 * @throws NullPointerException if s1 or s2 is null.
 	 */
-	public final double distance(final String s1, final String s2) {
+	private final double distance(final String s1, final String s2) {
 		return 1 - similarity(s1, s2);
 	}
 

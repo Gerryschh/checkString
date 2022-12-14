@@ -19,6 +19,10 @@ public class Country implements Bean {
 	public void setCountryName(String countryName) {
 		this.countryName = countryName;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Country [countryName=" + countryName + ", alphacode=" + alphacode + "]";
+	}
 	
 }

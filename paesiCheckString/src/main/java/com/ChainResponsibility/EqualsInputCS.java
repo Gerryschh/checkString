@@ -20,7 +20,7 @@ public class EqualsInputCS extends CheckChain {
 			}
 		}
 		
-		return super.checkNext(input);
+		return null;
 	}
 
 }
