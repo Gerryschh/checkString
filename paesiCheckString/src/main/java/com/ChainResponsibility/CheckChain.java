@@ -49,7 +49,7 @@ public abstract class CheckChain {
 	
 	protected String checkNext(String input) {
 		if (nextChain == null) {
-            strategy.addStupidInput(input);
+            //strategy.addStupidInput(input);
         	return "Input aggiunto al DB";
         }
         return this.nextChain.checkInternal(input);

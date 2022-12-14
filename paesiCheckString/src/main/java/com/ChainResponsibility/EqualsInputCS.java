@@ -19,7 +19,6 @@ public class EqualsInputCS extends CheckChain {
 				return key;
 			}
 		}
-		
 		return super.checkNext(input);
 	}
 

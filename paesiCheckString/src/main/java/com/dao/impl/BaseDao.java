@@ -31,7 +31,7 @@ public abstract class BaseDao {
 		session.beginTransaction();
 		session.save(b);
 		session.getTransaction().commit();
-		session.close();
+		//session.close();
 	}
 
 	protected Bean get(Class<? extends Bean> class1, String id) {
