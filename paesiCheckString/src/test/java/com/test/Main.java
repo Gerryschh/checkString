@@ -33,7 +33,7 @@ public class Main {
 		CheckChain lev = new Levenshtein(2); lev.setNextChain(cd);
 		CheckChain sd = new SorensenDice(0.6); sd.setNextChain(j);
 		CheckChain jd = new JaroDistance(0.8); jd.setNextChain(lev);
-		CheckChain ei = new EqualsInputCS(); ei.setNextChain(jd);
+		CheckChain ei = new EqualsInputCS(); ei.setNextChain(es);
 		
 		ei.setStrategy(s);
 		
